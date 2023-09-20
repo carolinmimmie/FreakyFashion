@@ -1,4 +1,4 @@
-# Freaky Fashion Console
+# Freaky Fashion 
 
 Enkel konsol-baserad e-commerce applikation för Freaky Fashion.
 
