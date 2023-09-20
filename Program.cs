@@ -1,4 +1,5 @@
 ﻿using FreakyFashion.Data;
+using FreakyFashion.Domain;
 using static System.Console;
 
 namespace FreakyFashionConsole;
@@ -36,9 +37,8 @@ class Program
 
     private static void ListProductsView()
     {
-        using var context = new ApplicationDbContext();
 
-        var products = context.Product.ToList();
+        var products = GetProducts();
 
         foreach (var product in products)
         {
@@ -49,6 +49,14 @@ class Program
     private static void WaitUntilKeyPressed(ConsoleKey key)//Håller kvar applikationen i while loopen tills användaren trycker på escape när användaren trycker på escape blir det false då kommer den köra vidare under whileloopen och hoppa tillbaka till menyn
     {
         while (ReadKey(true).Key != key) ;
+    }
+    private static IEnumerable<Product> GetProducts()//Håller kvar applikationen i while loopen tills användaren trycker på escape när användaren trycker på escape blir det false då kommer den köra vidare under whileloopen och hoppa tillbaka till menyn
+    {
+        using var context = new ApplicationDbContext();
+
+        var products = context.Product.ToList();
+
+        return products;
     }
 }
 
